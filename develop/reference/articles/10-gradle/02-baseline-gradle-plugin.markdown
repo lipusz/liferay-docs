@@ -10,7 +10,7 @@ the baseline. If there are any changes, it uses the OSGi semantic versioning
 rules to calculate the minimum new version. If the new bundle has a lower
 version, errors are thrown.
 
-The plugin has been successfully tested with Gradle 2.5 up to 3.2.1.
+The plugin has been successfully tested with Gradle 2.5 up to 3.3.
 
 ## Usage [](id=usage)
 
@@ -19,7 +19,7 @@ To use the plugin, include it in your build script:
 ```gradle
 buildscript {
     dependencies {
-        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.baseline", version: "1.1.0"
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.baseline", version: "1.1.7"
     }
 
     repositories {
@@ -90,7 +90,7 @@ Property Name | Type | Default Value | Description
 <a name="sourcedir"></a>`sourceDir` | `File` | `null` | The directory to which the [`packageinfo`](http://bnd.bndtools.org/chapters/170-versioning.html#versioning-packages) files are generated or updated.
 
 The properties of type `File` support any type that can be resolved by
-[`project.file`](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:file(java.css.Object)).
+[`project.file`](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:file\(java.css.Object\)).
 Moreover, it is possible to use Closures and Callables as values for the
 `String` properties to defer evaluation until task execution.
 

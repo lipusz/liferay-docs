@@ -5,8 +5,11 @@ reference documentation describes how to apply and use Liferay's Gradle plugins.
 The following Gradle plugins are documented in this section:
 
 - App Javadoc Builder
+- Baseline
 - Change Log Builder
 - CSS Builder
+- DB Support
+- Dependency Checker
 - Deployment Helper
 - Gulp
 - Jasper JSPC
@@ -14,6 +17,7 @@ The following Gradle plugins are documented in this section:
 - JS Module Config Generator
 - JS Transpiler
 - Lang Builder
+- Maven Plugin Builder
 - Node
 - Service Builder
 - Source Formatter

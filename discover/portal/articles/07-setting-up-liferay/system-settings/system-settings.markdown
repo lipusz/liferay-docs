@@ -35,7 +35,7 @@ component you want to configure, or click the actions button
 you'd like, then click *Save*. Now your configuration changes are saved and take
 place throughout the entire system.
 
-![Figure 3: Each System Settings entry will have a configuration Scope.](../../../images/system-settings-actions.png)
+![Figure 3: After saving changes to a configuration, actions *Reset Default Values* and *Export* are available for it.](../../../images/system-settings-actions.png)
 
 If you make some regrettable configuration decisions and can't recall exactly
 what you did, start over by clicking the actions button
@@ -91,19 +91,35 @@ the System Settings interface. Then you can just deploy them in the target
 Liferay installation.
 
 In the case of a single entry, just click the actions button
-(![Actions](../../../images/icon-actions.png)), then click *Export*. A `.cfg` file
+(![Actions](../../../images/icon-actions.png)), then click *Export*. A `.config` file
 will be downloaded, containing any configuration changes you've saved. 
+
++$$$
+
+**Note:** If you're running Liferay DE 7.0 Fix Pack 8 or later, the `.config`
+file format is exported from System Settings. If you're on an earlier fix pack,
+the `.cfg` file format is used. 
+
+If you're on Liferay Portal 7.0 GA3 or earlier, the `.cfg` file is exported from
+System Settings.
+
+The file format was changed to fix a bug with multi-value settings, which the
+`.cfg` file format did not handle properly. See
+[https://issues.liferay.com/browse/LPS-67890](https://issues.liferay.com/browse/LPS-67890)
+for more information. Any @product@ system later than those listed above use the
+`.config` file format.
+
+$$$
 
 To export all of the configuration changes you've made in System Settings, click
 the System Settings options button (![Options](../../../images/icon-options.png)),
-then click *Export All Settings*. You'll get a zip file with `.cfg` files
+then click *Export All Settings*. You'll get a zip file with `.config` files
 corresponding to all of the entries that you edited.
 
 To make these configurations active in the destination Liferay system, simply
-unzip and place the `.cfg` files in the `[Liferay_Home]/osgi/modules` folder.
+unzip and place the `.config` files in the `[Liferay_Home]/osgi/modules` folder.
 
 Now you know what System Settings is and how to use it. All that's left is
 exploring the entries to see what configuration options you can make. If you
 aren't sure what something does, check the documentation for the feature you're
 interested in, as specific configurations will be covered there.
-

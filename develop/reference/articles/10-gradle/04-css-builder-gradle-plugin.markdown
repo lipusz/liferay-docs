@@ -3,7 +3,7 @@
 The CSS Builder Gradle plugin lets you run the [Liferay CSS Builder](https://github.com/liferay/liferay-portal/tree/master/modules/util/css-builder)
 tool in order to compile [Sass](http://sass-lang.com/) files in your project.
 
-The plugin has been successfully tested with Gradle 2.5 up to 3.2.1.
+The plugin has been successfully tested with Gradle 2.5 up to 3.3.
 
 ## Usage [](id=usage)
 
@@ -12,7 +12,7 @@ To use the plugin, include it in your build script:
 ```gradle
 buildscript {
     dependencies {
-        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "1.0.15"
+        classpath group: "com.liferay", name: "com.liferay.gradle.plugins.css.builder", version: "2.0.0"
     }
 
     repositories {
@@ -64,7 +64,7 @@ Property Name | Default Value
 ### BuildCSSTask [](id=buildcsstask)
 
 Tasks of type `BuildCSSTask` extend [`JavaExec`](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html),
-so all its properties and methods, such as [`args`](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:args(java.css.Iterable))
+so all its properties and methods, such as [`args`](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:args\(java.css.Iterable\))
 and [`maxHeapSize`](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:maxHeapSize),
 are available. They also have the following properties set by default:
 
@@ -72,7 +72,7 @@ Property Name | Default Value
 ------------- | -------------
 [`args`](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:args) | CSS Builder command line arguments
 [`classpath`](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:classpath) | [`project.configurations.cssBuilder`](#liferay-css-builder-dependency)
-[`defaultCharacterEncoding`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/JavaExec.html#setDefaultCharacterEncoding(java.lang.String)) | `"UTF-8"`
+[`defaultCharacterEncoding`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/JavaExec.html#setDefaultCharacterEncoding\(java.lang.String\)) | `"UTF-8"`
 [`main`](https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html#org.gradle.api.tasks.JavaExec:main) | `"com.liferay.css.builder.CSSBuilder"`
 
 #### Task Properties [](id=task-properties)
@@ -81,7 +81,7 @@ Property Name | Type | Default Value | Description
 ------------- | ---- | ------------- | -----------
 `cssFiles` | `FileCollection` | \- | The SCSS files to compile. *(Read-only)*
 `dirNames` | `List<String>` | `["/"]` | The name of the directories, relative to [`docrootDir`](#docrootdir), which contain the SCSS files to compile. All sub-directories are searched for SCSS files as well. It sets the `sass.dir` argument.
-<a name="docrootdir"></a>`docrootDir` | `File` | `null` | The base directory which contains the SCSS files to compile. It sets the `sass.docroot.dir` argument.
+<a name="docrootdir"></a>`docrootDir` | `File` | `null` | The base directory that contains the SCSS files to compile. It sets the `sass.docroot.dir` argument.
 `generateSourceMap` | `boolean` | `false` | Whether to generate [source maps](https://developers.google.com/web/tools/chrome-devtools/debug/readability/source-maps) for easier debugging. It sets the `sass.generate.source.map` argument.
 `outputDirName` | `String` | `".sass-cache/"` | The name of the sub-directories where the SCSS files are compiled to. For each directory that contains SCSS files, a sub-directory with this name is created. It sets the `sass.output.dir` argument.
 `outputDirs` | `FileCollection` | \- | The directories where the SCSS files are compiled to. Usually, these directories are ignored by the Version Control System. *(Read-only)*
@@ -92,7 +92,21 @@ Property Name | Type | Default Value | Description
 `rtlExcludedPathRegexps` | `List<String>` | `[]` | The SCSS file patterns to exclude when converting for right-to-left (RTL) support. It sets the `sass.rtl.excluded.path.regexps` argument.
 `sassCompilerClassName` | `String` | `null` | The type of Sass compiler to use. Supported values are `"jni"` and `"ruby"`. If not set, defaults to `"jni"`. It sets the `sass.compiler.class.name` argument.
 
-The properties of type `File` support any type that can be resolved by [`project.file`](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:file(java.css.Object)).
++$$$
+
+**Note:** Liferay's CSS Builder is supported for Oracle's JDK and uses a native
+compiler for increased speed. If you're using an IBM JDK, you may experience
+issues when building your SASS files (e.g., when building a theme). It's
+recommended to switch to using the Oracle JDK, but if you prefer using the IBM
+JDK, you must use the fallback Ruby compiler. To do this, set the
+`sassCompilerClassName` property to `ruby`.
+
+Be aware that the Ruby-based compiler doesn't perform as well as the native
+compiler, so expect longer compile times.
+
+$$$
+
+The properties of type `File` support any type that can be resolved by [`project.file`](https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#org.gradle.api.Project:file\(java.css.Object\)).
 Moreover, it is possible to use Closures and Callables as values for the `int`
 and `String` properties, to defer evaluation until task execution.
 
@@ -118,7 +132,7 @@ manually adding a dependency to the `cssBuilder` configuration:
 
 ```gradle
 dependencies {
-    cssBuilder group: "com.liferay", name: "com.liferay.css.builder", version: "1.0.20"
+    cssBuilder group: "com.liferay", name: "com.liferay.css.builder", version: "1.0.26"
 }
 ```
 
