@@ -1,19 +1,13 @@
 ---
-header-id: search-tuning-customizing-search-results
+header-id: search-tuning-customizing-search-results-with-result-rankings
 ---
 
-# Search Tuning: Customizing Search Results
+# Search Tuning: Customizing Search Results with Result Rankings
 
 [TOC levels=1-4]
 
-| **Known Issues:** There are several known  issues for Result Rankings. See
-| [LPS-99540](https://issues.liferay.com/browse/LPS-99540) for the complete list.
-
 Starting with @product-ver@ Service Pack 1, new search tuning features are
 available for administrative Users: Custom Result Rankings is one of them.
-
-Search Tuning features like Result Rankings are only supported when using
-Elasticsearch as the search engine.
 
 Result Rankings provides a brute force method for intervening into the relevance
 scoring of the search engine, by doing these things:
@@ -54,6 +48,24 @@ keywords.
 | for Result Rankings. 
 
 ![Figure 1: The Lunar Resort wants to tweak these results: pin the Activities page to the top, and hide the legal content entirely.](../../images/search-result-rankings-todo.png) 
+
+## Requirements and Limitations
+
+Search Tuning features like Result Rankings are only supported when using
+Elasticsearch as the search engine.
+
+The Result Ranking entries are currently shared across all Virtual Instances so it is not possible to customize your search results differently.
+
+Multi-tenant @product@ integration with Elasticsearch (connecting multiple, indepedent @procuct@ deployments to the same Elasticsearch cluster) is not supported currently with Result Rankings.
+
+Existing Ranking can't be renamed and you can't change its search term. ((LPS-96357)[https://issues.liferay.com/browse/LPS-96357]).
+
+**LIST MORE STORIES**
+
+## Known Issues
+
+There are several known  issues and planned improvements for Result Rankings. See [LPS-99540](https://issues.liferay.com/browse/LPS-99540) for the complete list.  These are some of the most important ones:
+**LIST ISSUES**
 
 ## Creating and Managing Result Rankings
 
