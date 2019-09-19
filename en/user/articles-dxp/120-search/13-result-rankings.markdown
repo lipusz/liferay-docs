@@ -58,7 +58,7 @@ The Result Ranking entries are currently shared across all Virtual Instances so 
 
 Multi-tenant @product@ integration with Elasticsearch (connecting multiple, indepedent @procuct@ deployments to the same Elasticsearch cluster) is not supported currently with Result Rankings.
 
-Existing Ranking can't be renamed and you can't change its search term. ([LPS-96357)](https://issues.liferay.com/browse/LPS-96357)).
+Existing Ranking can't be renamed and you can't change its search term. [LPS-96357)](https://issues.liferay.com/browse/LPS-96357).
 
 **LIST MORE STORIES**
 
