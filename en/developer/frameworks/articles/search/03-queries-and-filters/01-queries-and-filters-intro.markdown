@@ -239,6 +239,7 @@ module's [source code](https://github.com/liferay/liferay-portal/tree/7.2.x/modu
 ## Search Engine Connector Support
 
 * Elasticsearch 6: Yes
+* Elasticsearch 7: Yes
 * Solr 7: No* (Only the "legacy" query types from
   `com.liferay.portal.kernel.search.*` are supported as of @product@ Beta 2.)
 
